@@ -1,0 +1,90 @@
+1. Author: 
+	Integer Id (PK, Auto increment), 
+	varchar FirstName (not null),
+	varchar LastName (not null),
+	Date DateOfBirth,
+	varchar City
+
+2. Book: 
+	Integer Id (PK, Auto increment),
+	varchar Name NOT NULL,
+	Integer CategoryId, (FK)
+	Date DateOfPublish,
+	text Description,
+	Decimal Price, NOT NULL
+	Decimal Assesment, CHECK (Assessment >= 0 AND Assessment <= 5)
+
+AuthorBook: 
+	Integer Id, (PK, Auto increment)
+	Integer AuthorId (FK),
+	Integer BookId (FK)
+
+3. Category: 
+	Integer Id, (PK, Auto increment)
+	varchar Category, NOT NULL, UNIQUE
+
+4. Order: 
+	Integer Id, (PK, Auto increment)
+	Integer UserId, (FK)
+	Date Date, NOT NULL
+	Decimal Cost, NOT NULL
+	varchar Place,
+	Integer DiscountId,(FK)
+	
+OrderBook: 
+	Integer Id, (PK, Auto increment)
+	Integer OrderId, (FK)
+	Integer BookId, (FK)
+
+5. User: 
+	Integer Id, (PK, Auto increment)
+	varchar Login, NOT NULL, UNIQUE 
+	varchar Password, NOT NULL
+	Integer RoleId, (FK)
+
+6. FeedBack: 
+	Integer Id, (PK, Auto increment)
+	Integer UserId, (FK)
+	Integer BookId, (FK)
+	Decimal Assesment, CHECK (Percent >= 0 AND Percent <= 5)
+
+7. Role: 
+	Integer Id, (PK, Auto increment)
+	varchar RoleName, NOT NULL, UNIQUE
+
+8. Discount: 
+	Integer Id, (PK, Auto increment)
+	varchar Code, NOT NULL
+	Decimal Percent, CHECK (Percent >= 0 AND Percent <= 100) 
+	Date StartDate, 
+	Date EndDate, 
+	Boolean IsActive
+
+9. UserLog: 
+	Integer Id, (PK, Auto increment)
+	Integer UserId, (FK)
+	Integer ActionId, (FK)
+	Date DateTime, NOT NULL
+
+10. Action: 
+	Integer Id, (PK, Auto increment)
+	varchar ActionName, NOT NULL, UNIQUE
+
+11. UserProfile: 
+	Integer Id, (PK, Auto increment)
+	Integer UserId, (FK)
+	varchar PhoneNumber, 
+	Date DateOfRegistration, NOT NULL, UNIQUE
+
+отношения между сущностями:
+Book и Author: MTM через AuthorBook.
+Book и Category: OTM.
+Order и User: OTM.
+Order и Book: MTM через OrderBook.
+User и Feedback: OTM.
+Book и Feedback: OTM.
+User и Role: OTM.
+User и UserProfile: OTO.
+UserLog и User: OTM.
+UserLog и Action: OTM.
+Order и Discount: OTM.
