@@ -40,7 +40,8 @@ OrderBook:
 	Integer Id, (PK, Auto increment)
 	varchar Login, NOT NULL, UNIQUE 
 	varchar Password, NOT NULL
-	Integer RoleId, (FK)
+	Integer RoleId, (FK),
+	Integer UserProfileId, (FK)
 
 6. FeedBack: 
 	Integer Id, (PK, Auto increment)
