@@ -61,7 +61,7 @@
 
 11. User: 
 	Integer Id, (PK, Auto increment)
-	varchar Login, NOT NULL, UNIQUE 
+	varchar Email, NOT NULL
 	varchar Password, NOT NULL
 	Integer RoleId, (FK),
 	Integer UserProfileId, (FK)
