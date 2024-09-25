@@ -44,7 +44,7 @@
 	Date Date, NOT NULL
 	Decimal Cost, NOT NULL
 	integer FullAdressId,(FK)
-	Integer DiscountId,(FK)
+	varchar Code,(FK) //относится к скидке
 	
 	9. FullAdress:
 		Integer Id, (PK, Auti increment)
@@ -77,8 +77,7 @@
 	varchar RoleName, NOT NULL, UNIQUE
 
 14. Discount: 
-	Integer Id, (PK, Auto increment)
-	varchar Code, NOT NULL
+	varchar Code, (PK)
 	Decimal Percent, CHECK (Percent >= 0 AND Percent <= 100) 
 	Date StartDate, 
 	Date EndDate, 
