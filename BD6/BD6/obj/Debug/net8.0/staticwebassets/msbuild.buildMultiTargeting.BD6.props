@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\BD6.props" />
+</Project>

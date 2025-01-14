@@ -1,0 +1,33 @@
+﻿@model IEnumerable<BD6.Entities.Author>
+
+<h2>Authors</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Date of Birth</th>
+            <th>City</th>
+            <th>Country</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var author in Model)
+        {
+            <tr>
+                <td>@author.FirstName</td>
+                <td>@author.LastName</td>
+                <td>@(author.DateOfBirth.HasValue ? author.DateOfBirth.Value.ToShortDateString() : "N/A")</td>
+                <td>@author.City</td>
+                <td>@author.Country</td>
+                <td>
+                    <a href="@Url.Action("Delete", "Author", new { id = author.AuthorId })" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Create", "Author")" class="btn btn-primary">Add New Author</a>

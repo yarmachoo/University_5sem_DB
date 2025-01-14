@@ -1,0 +1,32 @@
+﻿@model BD6.Models.RegisterModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Register" method="post">
+    <div class="form-group">
+        <label for="Email">Email:</label>
+        <input type="email" asp-for="Email" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="Password">Пароль:</label>
+        <input type="password" asp-for="Password" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="ConfirmPassword">Подтвердите Пароль:</label>
+        <input type="password" asp-for="ConfirmPassword" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="PhoneNumber">Телефон:</label>
+        <input type="text" asp-for="PhoneNumber" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+</form>
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger mt-2">@ViewBag.ErrorMessage</div>
+}

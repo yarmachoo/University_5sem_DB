@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Delete Book";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>Are you sure you want to delete the book <strong>@Model.Title</strong> by <strong>@Model.Author</strong>?</p>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" name="BookId" value="@Model.BookId" />
+    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+    <a href="@Url.Action("Index", "Book")" class="btn btn-secondary">Cancel</a>
+</form>
+

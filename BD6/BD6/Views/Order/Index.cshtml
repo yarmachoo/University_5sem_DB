@@ -1,0 +1,34 @@
+﻿@model IEnumerable<BD6.Entities.Order>
+
+<h2>Your Orders</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order Date</th>
+            <th>Address</th>
+            <th>Discount</th>
+            <th>Cost</th>
+            <th>Books</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.OrderDate.ToShortDateString()</td>
+                <td>@order.FullAddressOfOrder.Street, @order.FullAddressOfOrder.City, @order.FullAddressOfOrder.Country</td>
+                <td>@(order.Discount != null ? $"{order.Discount.Code} ({order.Discount.Percents}% off)" : "No discount")</td>
+                <td>@order.Cost.ToString("0.00")</td>
+                <td>
+                    @foreach (var book in order.Books)
+                    {
+                        <p>@book.Name - @book.Price.ToString("0.00")</p>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Index", "Home")" class="btn btn-secondary">Back to Home</a>
